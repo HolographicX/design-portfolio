@@ -1,5 +1,11 @@
 const projects = [
   {
+    image: "images/pleiades.jpg",
+    name: "Pleiades",
+    description: "DSLR Photo, Siril",
+    link: "images/pleiades.jpg"
+  },
+  {
     image: "images/fracley.png",
     name: "Fracley",
     description: "3D design, Blender",
@@ -13,16 +19,16 @@ const projects = [
     link: "https://github.com/honeyoak/spin-dac"
   },
   {
+    image: "images/orion.jpg",
+    name: "Orion Nebula",
+    description: "DSLR Photo, Siril",
+    link: "images/orion.jpg"
+  },
+  {
     image: "images/keyboard.png",
     name: "keyboard",
     description: "3D design, Blender",
     link: "https://github.com/HolographicX/keyboard"
-  },
-  {
-    image: "images/hfs.png",
-    name: "HFS",
-    description: "Vector Art, Inkscape",
-    link: "https://hackfromscratch.org"
   },
   {
     image: "images/carora.png",
@@ -35,6 +41,12 @@ const projects = [
     name: "Hamari",
     description: "Web UI/UX, Figma",
     link: "https://holographicx.github.io/hamarisilai/"
+  },
+  {
+    image: "images/hfs.png",
+    name: "HFS",
+    description: "Vector Art, Inkscape",
+    link: "https://hackfromscratch.org"
   },
 
 
