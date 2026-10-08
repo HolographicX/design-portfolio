@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulp — design fun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="project-page">
+  <main class="project-shell keyboard-case">
+    <a class="back-link" href="index.html">← &nbsp;Back to selected work</a>
+    <header class="project-hero">
+      <p class="project-meta">Open-source keyboard / 2025</p>
+      <h1 class="project-heading">Pulp.</h1>
+      <p class="project-subtitle">A minimal, low-profile split ortholinear keyboard with 40 keys.</p>
+    </header>
+    <figure class="hero-figure"><button class="zoomable hero-zoom" type="button" data-zoom-source="images/pulp/render-2.png" data-zoom-alt="Pulp keyboard render"><img class="hero-image" src="images/pulp/render-2.png" alt="Pulp keyboard render"><span class="zoom-hint">Click to enlarge ↗</span></button><figcaption class="hero-caption">01 — Pulp / final render</figcaption></figure>
+    <section class="overview keyboard-intro">
+      <div><p class="section-kicker">A small keyboard, deliberately</p><h2>Less reach.<br>More intention.</h2></div>
+      <div class="overview-copy">
+        <p>Pulp began with a simple desire: make a split keyboard that feels as clean as it is capable. Split layouts are a revelation ergonomically, but I did not want that comfort to come with visual clutter or unnecessary complexity.</p>
+        <p>I took cues from the Totem’s restraint and the Corne’s familiar thumb cluster, then made the design my own: a compact, slightly staggered layout, low-profile Choc switches, and just forty keys. Each half carries a tiny OLED display and a low-profile knob, so the board remains expressive without becoming busy.</p>
+        <div class="facts"><div><span>Layout</span><strong>40-key split ortho</strong></div><div><span>Firmware</span><strong>ZMK</strong></div><div><span>Built with</span><strong>KiCad + Onshape</strong></div></div>
+      </div>
+    </section>
+    <section class="process-section">
+      <div class="process-header"><p class="section-kicker">From reference to routing</p><h2>Designing<br>the quiet details.</h2><p>The goal stayed constant throughout: an ergonomic board with a calm silhouette. Getting there involved a few useful detours.</p></div>
+      <div class="process-log">
+        <article class="process-entry"><p class="process-number">01 / Research</p><div><h3>Finding the balance</h3><p>I started by studying the keyboards I kept returning to. The Totem made a case for minimalism, while the Corne’s thumb cluster felt like a strong foundation. That comparison set the direction: low profile was non-negotiable, but the layout still needed enough contour and reachability to feel intentional in use.</p></div></article>
+        <article class="process-entry"><p class="process-number">02 / Schematic</p><div><h3>One schematic, two halves</h3><p>The electronics came together around nice!nano v2 controllers, hot-swappable Choc switches, diodes, OLEDs, and encoders. I designed both sides around the same schematic from the beginning, with a flippable PCB in mind—one board design instead of separate left and right orders.</p></div></article>
+        <article class="process-entry"><p class="process-number">03 / PCB</p><div><h3>Letting the layout tool help</h3><p>After spending too long wrestling with grids, splay, and mirrored placement in KiCad, I switched to Ergogen for the layout work. It was the right pivot: the component positions became easier to iterate on, and the flippable-board constraint stopped dominating every decision. Back in KiCad, I refined the placement, added 3D models, and prepared the board for routing.</p></div></article>
+        <article class="process-entry"><p class="process-number">04 / Enclosure</p><div><h3>Giving the electronics a home</h3><p>With the board taking shape, I moved into Onshape to assemble the PCB and components, then designed the case, bottom plate, and screw locations around them. The final stretch was about resolution: finishing the bill of materials, rendering the form in Blender, and routing the traces that turn the idea into a buildable keyboard.</p></div></article>
+      </div>
+    </section>
+    <section class="feature-section"><p class="section-kicker">Built to be used, and remade</p><h2>Small board.<br>Complete system.</h2><div class="feature-list"><span>Hot-swappable Choc v1 switches</span><span>128 × 32 OLED on each half</span><span>Low-profile knob on each half</span><span>Flippable PCB</span><span>3D-printable, open-source design</span><span>Corne-inspired thumb cluster</span></div></section>
+    <section class="media-section"><p class="section-kicker">The workbench</p><h2>Board, body,<br>and final form.</h2><div class="media-grid keyboard-media"><figure class="media-tile large"><button class="zoomable" type="button" data-zoom-source="images/pulp/keyboard.png" data-zoom-alt="Pulp final keyboard build"><img src="images/pulp/keyboard.png" alt="Pulp final keyboard build"><span class="media-label">Final build / Pulp</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/pulp/kicad-pcb.png" data-zoom-alt="Pulp PCB layout"><img src="images/pulp/kicad-pcb.png" alt="Pulp PCB layout"><span class="media-label">PCB layout / KiCad</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/pulp/onshape-cad-image.png" data-zoom-alt="Pulp keyboard CAD assembly"><img src="images/pulp/onshape-cad-image.png" alt="Pulp keyboard CAD assembly"><span class="media-label">CAD assembly / Onshape</span></button></figure></div></section>
+    <footer class="case-cta"><p>Pulp is designed to be replicated, modified, and made your own.</p><a class="repo-link" href="https://github.com/HolographicX/pulp" target="_blank" rel="noopener">View source ↗</a></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

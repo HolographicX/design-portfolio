@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin DAC — design fun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="project-page">
+  <main class="project-shell">
+    <a class="back-link" href="index.html">← &nbsp;Back to selected work</a>
+    <header class="project-hero">
+      <p class="project-meta">Audio hardware / in progress</p>
+      <h1 class="project-heading">Spin DAC.</h1>
+      <p class="project-subtitle">A compact USB-C digital-to-analog converter for high-quality portable listening.</p>
+    </header>
+    <figure class="hero-figure"><button class="zoomable hero-zoom" type="button" data-zoom-source="images/spin-dac/spin-dac.png" data-zoom-alt="Spin DAC render"><img class="hero-image" src="images/spin-dac/spin-dac.png" alt="Spin DAC render"><span class="zoom-hint">Click to enlarge ↗</span></button><figcaption class="hero-caption">01 — Spin DAC / current direction</figcaption></figure>
+    <section class="overview">
+      <div><p class="section-kicker">A better signal path</p><h2>Small device.<br>Serious sound.</h2></div>
+      <div class="overview-copy">
+        <p>Spin DAC started with a frustrating gap: commercial DACs that promise clean, portable audio tend to be either expensive, bulky, or both. I wanted to see whether a compact, budget-conscious USB-C DAC could still be engineered with a careful signal path and a focus on low noise.</p>
+        <p>The design converts digital audio from a USB-C source into an analog signal for headphones or speakers. The circuit centers on three essential stages—USB to I²S, digital-to-analog conversion, and amplification—with an analog volume potentiometer to keep the physical interaction direct and simple.</p>
+        <div class="facts"><div><span>Audio</span><strong>Up to 24-bit / 192 kHz</strong></div><div><span>PCB</span><strong>Four layers</strong></div><div><span>Status</span><strong>PCB received · paused</strong></div></div>
+      </div>
+    </section>
+    <section class="process-section">
+      <div class="process-header"><p class="section-kicker">A first audio board</p><h2>Keeping the noise<br>out of the music.</h2><p>This is my first PCB project and my first four-layer board. The board has arrived, and hardware assembly is currently paused while I focus on other projects.</p></div>
+      <div class="process-log">
+        <article class="process-entry"><p class="process-number">01 / Research</p><div><h3>Making the project feel possible</h3><p>I began by looking at existing DIY DACs and compact headphone amplifiers. Those projects made the core architecture feel approachable: USB-to-I²S, a DAC, and an op-amp. The real challenge was not inventing the circuit, but building a clean enough implementation that noise and interference would not undermine it.</p></div></article>
+        <article class="process-entry"><p class="process-number">02 / Schematic</p><div><h3>Reading the details</h3><p>The schematic required the most research. I worked through datasheets, component options, footprints, and the supporting circuitry around each major part. By the end, the system had a concrete set of components and a signal path I could confidently carry into layout.</p></div></article>
+        <article class="process-entry"><p class="process-number">03 / PCB</p><div><h3>Separating the sensitive parts</h3><p>Audio made the board layout feel especially consequential. I used a four-layer stack-up to reduce electromagnetic interference and give the digital and analog sections room to stay deliberately separated. Routing meant paying attention not only to where a trace went, but which layer it belonged on and what it might disturb nearby.</p></div></article>
+        <article class="process-entry"><p class="process-number">04 / Enclosure</p><div><h3>Planning the object around the board</h3><p>Once the PCB was routed, I designed a compact enclosure in Onshape with room for the connectors, knob, and fasteners, then rendered the concept in Blender. The next stage is hands-on: assembling the delivered PCB and finding out how the decisions on screen translate into sound.</p></div></article>
+      </div>
+    </section>
+    <section class="feature-section"><p class="section-kicker">Signal chain</p><h2>Designed for<br>quiet listening.</h2><div class="feature-list"><span>USB-C input</span><span>Up to 24-bit / 192 kHz audio</span><span>PCM5102A DAC</span><span>Integrated op-amp stage</span><span>Separated analog and digital signals</span><span>3.5 mm audio output</span></div></section>
+    <section class="media-section"><p class="section-kicker">Documentation</p><h2>From circuit<br>to enclosure.</h2><div class="media-grid spin-media"><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/spin-dac/render-2.png" data-zoom-alt="Spin DAC alternate render"><img src="images/spin-dac/render-2.png" alt="Spin DAC alternate render"><span class="media-label">Render / concept</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/spin-dac/kicad-schematic.png" data-zoom-alt="Spin DAC schematic"><img src="images/spin-dac/kicad-schematic.png" alt="Spin DAC schematic"><span class="media-label">Schematic / KiCad</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/spin-dac/pcb-kicad-render.png" data-zoom-alt="Spin DAC PCB render"><img src="images/spin-dac/pcb-kicad-render.png" alt="Spin DAC PCB render"><span class="media-label">PCB / KiCad render</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/spin-dac/pcb-kicad-routing.png" data-zoom-alt="Spin DAC PCB routing"><img src="images/spin-dac/pcb-kicad-routing.png" alt="Spin DAC PCB routing"><span class="media-label">PCB / routing</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/spin-dac/cad-1.png" data-zoom-alt="Spin DAC CAD model"><img src="images/spin-dac/cad-1.png" alt="Spin DAC CAD model"><span class="media-label">CAD / enclosure</span></button></figure><figure class="media-tile"><button class="zoomable" type="button" data-zoom-source="images/spin-dac/cad-2.png" data-zoom-alt="Spin DAC CAD model detail"><img src="images/spin-dac/cad-2.png" alt="Spin DAC CAD model detail"><span class="media-label">CAD / assembly</span></button></figure></div></section>
+    <footer class="case-cta"><p>Assembly is next when Spin DAC returns from its pause.</p><a class="repo-link" href="https://github.com/honeyoak/spin-dac" target="_blank" rel="noopener">View source ↗</a></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
