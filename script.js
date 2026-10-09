@@ -3,7 +3,7 @@ const githubIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7A
 const projects = [
   {
     id: "pulp",
-    page: "pulp.html",
+    page: "/pulp",
     name: "Pulp",
     description: "A minimal split keyboard.",
     image: "images/pulp/keyboard.png",
@@ -54,7 +54,7 @@ const projects = [
   },
   {
     id: "fracley",
-    page: "fracley.html",
+    page: "/fracley",
     name: "Fracley",
     description: "3D Printable Refractor Telescope",
     image: "images/fracley/fracley.png",
@@ -107,7 +107,7 @@ const projects = [
   },
   {
     id: "spin-dac",
-    page: "spin-dac.html",
+    page: "/spin-dac",
     name: "Spin DAC",
     description: "USB-C audio hardware",
     image: "images/spin-dac/spin-dac.png",
@@ -168,7 +168,7 @@ function renderGallery() {
   const grid = document.getElementById("projects-grid");
   if (!grid) return;
   grid.innerHTML = projects.map(project => {
-    const href = project.page || `project.html?project=${project.id}`;
+    const href = project.page || `/project?project=${project.id}`;
     return `<article class="project-card"><a class="project-link" href="${href}" aria-label="View ${escapeHtml(project.name)} case study"><img class="project-image" src="${project.image}" alt="${escapeHtml(project.name)} project preview" /><div class="project-text"><span class="project-title">${escapeHtml(project.name)}</span><span class="project-description">${escapeHtml(project.description)}</span></div></a>${project.github ? `<a class="icon-button" href="${project.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(project.name)} on GitHub">${githubIcon}</a>` : ""}</article>`;
   }).join("");
 }
@@ -180,7 +180,7 @@ function renderCaseStudy(project) {
   const features = project.features.items.map(item => `<span>${item}</span>`).join("");
   const tiles = project.media.tiles.map(tile => `<figure class="media-tile${tile.large ? " large" : ""}"><button class="zoomable" type="button" data-zoom-source="${tile.src}" data-zoom-alt="${escapeHtml(tile.alt)}"><img src="${tile.src}" alt="${escapeHtml(tile.alt)}"><span class="media-label">${tile.label}</span></button></figure>`).join("");
   return `<div class="project-shell">
-    <a class="back-link" href="index.html">← &nbsp;Back to selected work</a>
+    <a class="back-link" href="/">← &nbsp;Back to selected work</a>
     <header class="project-hero">
       <p class="project-meta">${project.meta.type} / ${project.meta.year}</p>
       <h1 class="project-heading">${project.name}.</h1>
@@ -208,7 +208,7 @@ function renderProject() {
   const project = id ? byId[id] : null;
   if (!project) {
     document.title = "Project not found — design fun";
-    detail.innerHTML = `<div class="project-shell"><a class="back-link" href="index.html">← &nbsp;Back to selected work</a><section class="overview"><div><p class="section-kicker">404</p><h2>Project<br>not found.</h2></div><div class="overview-copy"><p>That case study doesn’t exist yet. Head back to see the selected work.</p></div></section></div>`;
+    detail.innerHTML = `<div class="project-shell"><a class="back-link" href="/">← &nbsp;Back to selected work</a><section class="overview"><div><p class="section-kicker">404</p><h2>Project<br>not found.</h2></div><div class="overview-copy"><p>That case study doesn’t exist yet. Head back to see the selected work.</p></div></section></div>`;
     return;
   }
   document.title = `${project.name} — design fun`;

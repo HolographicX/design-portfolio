@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://art.auroraa.space/sitemap.xml
+Sitemap: https://maker.auroraa.space/sitemap.xml
