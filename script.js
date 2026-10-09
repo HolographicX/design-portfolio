@@ -71,9 +71,9 @@ const projects = [
         "The optical design centers on an 83mm aperture doublet lens with a 600mm focal length and f/7.2 focal ratio. That ratio is customizable—buy a lower focal length lens and move the lens cell backward to change the configuration."
       ],
       facts: [
-        { label: "Aperture", value: "83mm doublet" },
+        { label: "Lens", value: "83mm doublet" },
         { label: "Focal", value: "600mm · f/7.2" },
-        { label: "Printing", value: "No supports" }
+        { label: "Status", value: "Completed & Published" }
       ]
     },
     process: {
