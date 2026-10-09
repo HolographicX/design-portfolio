@@ -82,7 +82,7 @@ const projects = [
       intro: "A telescope is unforgiving. Get something off by a fraction of a millimetre and the image never sharpens. So here is how I chased that precision with printed parts, and why I made the choices I did.",
       entries: [
         { num: "01 / Motivation", title: "A telescope I could actually build", body: "I wanted to look at the night sky and photograph it, but the refractors that do both well cost more than I could justify. The Hadley project had already shown me that a 3D-printed telescope could really perform, so I used it as a starting point. Fracley became my attempt to take that proven base and make it my own. I wanted something light enough to carry outside on a whim, cheap enough to build from printed parts and common hardware, and open enough that someone else could build one from my files." },
-        { num: "02 / Lens cell", title: "Where a fraction of a millimetre matters", body: "A refractor lives or dies by the alignment of its lens. The doublet has to sit square to the optical axis. Any tilt throws the focal plane off-center, which is fine for a quick glance at the moon but ruins astrophotography. I split the lens cell into an inner and outer ring that clamp the glass. The real decision was how to fasten it. Instead of adding a separate collimation mechanism, I used six M3 screws around the perimeter. Each screw holds the cell together and also pulls its section of the ring forward or back. Turn a pair of screws and the lens tilts in tiny increments. So collimation comes from the same six bolts that already assembled the cell. It was a bet that printed tolerance could hold an optical surface steady. That felt like a bet worth testing." },
+        { num: "02 / Lens cell", title: "Where a fraction of a millimetre matters", body: "A refractor lives or dies by the alignment of its lens. The doublet has to sit square to the optical axis. Any tilt throws the focal plane off-center, which is fine for a quick glance at the moon but ruins astrophotography. I split the lens cell into an inner and outer ring that clamp the glass. The real decision was how to fasten it. Instead of adding a separate collimation mechanism, I used six M3 screws around the perimeter. Each screw holds the cell together and also pulls its section of the ring forward or back. Turn a pair of screws and the lens tilts in tiny increments. So collimation comes from the same six bolts that already assembled the cell." },
         { num: "03 / Structure", title: "Light, stiff, and honest about it", body: "A telescope only works if it refuses to bend. Point a heavy one low and the tube sags under its own weight. Print a solid tube instead and it becomes a brick that never leaves the shelf. So I replaced the tube with three carbon fiber rods that run between the lens cell and the focuser joint. Carbon fiber gives me the stiffness of a much heavier part for a fraction of the mass. Three rods also form a naturally rigid triangle, so the frame resists bending and twisting without a closed shell. The open design keeps the whole thing light enough to carry in one hand. For a telescope that is actually meant to get used, that matters more than any number on a spec sheet." },
         { num: "04 / Focuser", title: "Tolerances you can feel", body: "The focuser is where a design stops being an image on a screen and becomes something your hands judge. A refractor’s focus is fine enough that too much play in a helical focuser wobbles the view as you turn it. Too little clearance and it binds or grinds. I went through a long run of test prints, nudging the clearances by fractions of a millimetre. Eventually it moved smoothly with no detectable backlash. It was the slowest part of the build and the least visible in the final photos. It is also the difference between a telescope you fight and one that quietly disappears while you are looking through it." },
         { num: "05 / Iteration", title: "Prototype, measure, reprint", body: "Very little survived the first print unchanged. I would assemble a section and find the heat-set inserts sitting proud, the rods binding, or the lens cell flexing under load. Then it was back into CAD and another print. Every pass tightened the geometry and the build guide. By the end I could hand someone a bill of materials and a set of STL files and trust that the parts would fit. First light through the finished scope, a full moon and a lunar eclipse, was the reward." }
@@ -167,12 +167,190 @@ const projects = [
 const byId = Object.fromEntries(projects.map(project => [project.id, project]));
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 
+const thumbHashes = {
+  "images/fracley/build-prototype.jpg": "XSkKDYKKmXfbZ3ePd4h2hucmb3yw",
+  "images/fracley/eclipse-image.png": "yPcBBYAI5yl4d3hwjmGXjQh3cHAH",
+  "images/fracley/fracley.png": "FvcNFICGhniAh3eHd4eIj8r6tQ==",
+  "images/fracley/initial-cad.png": "5fcJBICo2HZ2iIl/hppZZf+Y6A==",
+  "images/fracley/moon-image.jpg": "yvcFBwAKZ2dUqodydadpN6eJRd/Kg68D",
+  "images/fracley/real-final-build-photo.png": "GwgKFQK2Z493R2hYh4tneIeAawe4",
+  "images/pulp/keyboard.png": "jQcKDIJQaJiVh4eReoi/a6+TBw==",
+  "images/pulp/kicad-pcb.png": "CtcFBYImSViMdodweVmHleZmX272",
+  "images/pulp/onshape-cad-image.png": "+QcKDID2qGl3mHifZInndL+QGQ==",
+  "images/pulp/real-final-build.jpg": "oygGDIL8h4d8d4eMd4qVdl94Bw==",
+  "images/pulp/render-2.png": "kvcJDIBRaJiUh3egiYbNbN+iBQ==",
+  "images/spin-dac/PCB-real.jpg": "5SgODID6lml6iIaMdoeQhwdf5w==",
+  "images/spin-dac/cad-1.png": "7wcSDoD1iYmHeIefZHd3qWiJrmofVQk=",
+  "images/spin-dac/cad-2.png": "7gcSBID5lmeXV4h+hGf2dp+QCA==",
+  "images/spin-dac/kicad-schematic.png": "OwgCBYCIqGZmmHibZ/ZohHaKUDv6",
+  "images/spin-dac/pcb-kicad-render.png": "YxcGDYLplnivSnuJd7d3egZrh6A3",
+  "images/spin-dac/pcb-kicad-routing.png": "R+cFDYIJd3edVXeHeXeXdAmdd7Bo",
+  "images/spin-dac/render-2.png": "ZAcSBICpZ4dwd3d1hne/chjt+A==",
+  "images/spin-dac/spin-dac.png": "YgcSBICpZ4hgh3hnhod/YAfDGA==",
+};
+
+/* ThumbHash by Evan Wallace, github.com/evanw/thumbhash (MIT licensed). */
+function thumbHashToApproximateAspectRatio(hash) {
+  let header = hash[3];
+  let hasAlpha = hash[2] & 0x80;
+  let isLandscape = hash[4] & 0x80;
+  let lx = isLandscape ? (hasAlpha ? 5 : 7) : header & 7;
+  let ly = isLandscape ? header & 7 : hasAlpha ? 5 : 7;
+  return lx / ly;
+}
+
+function thumbHashToRGBA(hash) {
+  let { PI, min, max, cos, round } = Math;
+
+  let header24 = hash[0] | (hash[1] << 8) | (hash[2] << 16);
+  let header16 = hash[3] | (hash[4] << 8);
+  let l_dc = (header24 & 63) / 63;
+  let p_dc = ((header24 >> 6) & 63) / 31.5 - 1;
+  let q_dc = ((header24 >> 12) & 63) / 31.5 - 1;
+  let l_scale = ((header24 >> 18) & 31) / 31;
+  let hasAlpha = header24 >> 23;
+  let p_scale = ((header16 >> 3) & 63) / 63;
+  let q_scale = ((header16 >> 9) & 63) / 63;
+  let isLandscape = header16 >> 15;
+  let lx = max(3, isLandscape ? (hasAlpha ? 5 : 7) : header16 & 7);
+  let ly = max(3, isLandscape ? header16 & 7 : hasAlpha ? 5 : 7);
+  let a_dc = hasAlpha ? (hash[5] & 15) / 15 : 1;
+  let a_scale = (hash[5] >> 4) / 15;
+
+  let ac_start = hasAlpha ? 6 : 5;
+  let ac_index = 0;
+  let decodeChannel = (nx, ny, scale) => {
+    let ac = [];
+    for (let cy = 0; cy < ny; cy++)
+      for (let cx = cy ? 0 : 1; cx * ny < nx * (ny - cy); cx++)
+        ac.push((((hash[ac_start + (ac_index >> 1)] >> ((ac_index++ & 1) << 2)) & 15) / 7.5 - 1) * scale);
+    return ac;
+  };
+  let l_ac = decodeChannel(lx, ly, l_scale);
+  let p_ac = decodeChannel(3, 3, p_scale * 1.25);
+  let q_ac = decodeChannel(3, 3, q_scale * 1.25);
+  let a_ac = hasAlpha && decodeChannel(5, 5, a_scale);
+
+  let ratio = thumbHashToApproximateAspectRatio(hash);
+  let w = round(ratio > 1 ? 32 : 32 * ratio);
+  let h = round(ratio > 1 ? 32 / ratio : 32);
+  let rgba = new Uint8Array(w * h * 4), fx = [], fy = [];
+  for (let y = 0, i = 0; y < h; y++) {
+    for (let x = 0; x < w; x++, i += 4) {
+      let l = l_dc, p = p_dc, q = q_dc, a = a_dc;
+
+      for (let cx = 0, n = max(lx, hasAlpha ? 5 : 3); cx < n; cx++)
+        fx[cx] = cos(PI / w * (x + 0.5) * cx);
+      for (let cy = 0, n = max(ly, hasAlpha ? 5 : 3); cy < n; cy++)
+        fy[cy] = cos(PI / h * (y + 0.5) * cy);
+
+      for (let cy = 0, j = 0; cy < ly; cy++)
+        for (let cx = cy ? 0 : 1, fy2 = fy[cy] * 2; cx * ly < lx * (ly - cy); cx++, j++)
+          l += l_ac[j] * fx[cx] * fy2;
+
+      for (let cy = 0, j = 0; cy < 3; cy++) {
+        for (let cx = cy ? 0 : 1, fy2 = fy[cy] * 2; cx < 3 - cy; cx++, j++) {
+          let f = fx[cx] * fy2;
+          p += p_ac[j] * f;
+          q += q_ac[j] * f;
+        }
+      }
+
+      if (hasAlpha)
+        for (let cy = 0, j = 0; cy < 5; cy++)
+          for (let cx = cy ? 0 : 1, fy2 = fy[cy] * 2; cx < 5 - cy; cx++, j++)
+            a += a_ac[j] * fx[cx] * fy2;
+
+      let b = l - 2 / 3 * p;
+      let r = (3 * l - b + q) / 2;
+      let g = r - q;
+      rgba[i] = max(0, 255 * min(1, r));
+      rgba[i + 1] = max(0, 255 * min(1, g));
+      rgba[i + 2] = max(0, 255 * min(1, b));
+      rgba[i + 3] = max(0, 255 * min(1, a));
+    }
+  }
+  return { w, h, rgba };
+}
+
+function rgbaToDataURL(w, h, rgba) {
+  let row = w * 4 + 1;
+  let idat = 6 + h * (5 + row);
+  let bytes = [
+    137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0,
+    w >> 8, w & 255, 0, 0, h >> 8, h & 255, 8, 6, 0, 0, 0, 0, 0, 0, 0,
+    idat >>> 24, (idat >> 16) & 255, (idat >> 8) & 255, idat & 255,
+    73, 68, 65, 84, 120, 1
+  ];
+  let table = [
+    0, 498536548, 997073096, 651767980, 1994146192, 1802195444, 1303535960,
+    1342533948, -306674912, -267414716, -690576408, -882789492, -1687895376,
+    -2032938284, -1609899400, -1111625188
+  ];
+  let a = 1, b = 0;
+  for (let y = 0, i = 0, end = row - 1; y < h; y++, end += row - 1) {
+    bytes.push(y + 1 < h ? 0 : 1, row & 255, row >> 8, ~row & 255, (row >> 8) ^ 255, 0);
+    for (b = (b + a) % 65521; i < end; i++) {
+      let u = rgba[i] & 255;
+      bytes.push(u);
+      a = (a + u) % 65521;
+      b = (b + a) % 65521;
+    }
+  }
+  bytes.push(
+    b >> 8, b & 255, a >> 8, a & 255, 0, 0, 0, 0,
+    0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130
+  );
+  for (let [start, end] of [[12, 29], [37, 41 + idat]]) {
+    let c = ~0;
+    for (let i = start; i < end; i++) {
+      c ^= bytes[i];
+      c = (c >>> 4) ^ table[c & 15];
+      c = (c >>> 4) ^ table[c & 15];
+    }
+    c = ~c;
+    bytes[end++] = c >>> 24;
+    bytes[end++] = (c >> 16) & 255;
+    bytes[end++] = (c >> 8) & 255;
+    bytes[end++] = c & 255;
+  }
+  return "data:image/png;base64," + btoa(String.fromCharCode(...bytes));
+}
+
+const blurCache = new Map();
+function blurPlaceholder(src) {
+  const hash = thumbHashes[src];
+  if (!hash) return "";
+  if (!blurCache.has(hash)) {
+    const bytes = Uint8Array.from(atob(hash), char => char.charCodeAt(0));
+    const { w, h, rgba } = thumbHashToRGBA(bytes);
+    blurCache.set(hash, rgbaToDataURL(w, h, rgba));
+  }
+  return blurCache.get(hash);
+}
+
+const blurFrameStyle = src => {
+  const url = blurPlaceholder(src);
+  return url ? ` style="background-image:url('${url}')"` : "";
+};
+
+function revealBlurImages(root = document) {
+  root.querySelectorAll("img.blur-img").forEach(img => {
+    const reveal = () => img.classList.add("is-loaded");
+    if (img.complete && img.naturalWidth > 0) reveal();
+    else {
+      img.addEventListener("load", reveal, { once: true });
+      img.addEventListener("error", reveal, { once: true });
+    }
+  });
+}
+
 function renderGallery() {
   const grid = document.getElementById("projects-grid");
   if (!grid) return;
   grid.innerHTML = projects.map(project => {
     const href = project.page || `/project?project=${project.id}`;
-    return `<article class="project-card"><a class="project-link" href="${href}" aria-label="View ${escapeHtml(project.name)} case study"><img class="project-image" src="${project.image}" alt="${escapeHtml(project.name)} project preview" /><div class="project-text"><span class="project-title">${escapeHtml(project.name)}</span><span class="project-description">${escapeHtml(project.description)}</span></div></a>${project.github ? `<a class="icon-button" href="${project.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(project.name)} on GitHub">${githubIcon}</a>` : ""}</article>`;
+    return `<article class="project-card"><a class="project-link" href="${href}" aria-label="View ${escapeHtml(project.name)} case study"><span class="blur-frame"${blurFrameStyle(project.image)}><img class="project-image blur-img" src="${project.image}" alt="${escapeHtml(project.name)} project preview" loading="lazy" decoding="async" /></span><div class="project-text"><span class="project-title">${escapeHtml(project.name)}</span><span class="project-description">${escapeHtml(project.description)}</span></div></a>${project.github ? `<a class="icon-button" href="${project.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(project.name)} on GitHub">${githubIcon}</a>` : ""}</article>`;
   }).join("");
 }
 
@@ -181,7 +359,7 @@ function renderCaseStudy(project) {
   const paragraphs = project.overview.body.map(text => `<p>${text}</p>`).join("");
   const entries = project.process.entries.map(entry => `<article class="process-entry"><p class="process-number">${entry.num}</p><div><h3>${entry.title}</h3><p>${entry.body}</p></div></article>`).join("");
   const features = project.features.items.map(item => `<span>${item}</span>`).join("");
-  const tiles = project.media.tiles.map(tile => `<figure class="media-tile${tile.large ? " large" : ""}"><button class="zoomable" type="button" data-zoom-source="${tile.src}" data-zoom-alt="${escapeHtml(tile.alt)}"><img src="${tile.src}" alt="${escapeHtml(tile.alt)}"><span class="media-label">${tile.label}</span></button></figure>`).join("");
+  const tiles = project.media.tiles.map(tile => `<figure class="media-tile${tile.large ? " large" : ""}"><button class="zoomable blur-frame" type="button"${blurFrameStyle(tile.src)} data-zoom-source="${tile.src}" data-zoom-alt="${escapeHtml(tile.alt)}"><img class="blur-img" src="${tile.src}" alt="${escapeHtml(tile.alt)}" loading="lazy" decoding="async"><span class="media-label">${tile.label}</span></button></figure>`).join("");
   return `<div class="project-shell">
     <a class="back-link" href="/">← &nbsp;Back to selected work</a>
     <header class="project-hero">
@@ -189,7 +367,7 @@ function renderCaseStudy(project) {
       <h1 class="project-heading">${project.name}.</h1>
       <p class="project-subtitle">${project.subtitle}</p>
     </header>
-    <figure class="hero-figure"><button class="zoomable hero-zoom" type="button" data-zoom-source="${project.hero.src}" data-zoom-alt="${escapeHtml(project.hero.alt)}"><img class="hero-image" src="${project.hero.src}" alt="${escapeHtml(project.hero.alt)}"><span class="zoom-hint">Click to enlarge ↗</span></button><figcaption class="hero-caption">${project.hero.caption}</figcaption></figure>
+    <figure class="hero-figure"><button class="zoomable hero-zoom blur-frame" type="button"${blurFrameStyle(project.hero.src)} data-zoom-source="${project.hero.src}" data-zoom-alt="${escapeHtml(project.hero.alt)}"><img class="hero-image blur-img" src="${project.hero.src}" alt="${escapeHtml(project.hero.alt)}" fetchpriority="high" decoding="async"><span class="zoom-hint">Click to enlarge ↗</span></button><figcaption class="hero-caption">${project.hero.caption}</figcaption></figure>
     <section class="overview">
       <div><p class="section-kicker">${project.overview.kicker}</p><h2>${project.overview.heading}</h2></div>
       <div class="overview-copy">${paragraphs}<div class="facts">${facts}</div></div>
@@ -221,14 +399,20 @@ function renderProject() {
 function setupLightbox() {
   const lightbox = document.createElement("dialog");
   lightbox.className = "lightbox";
-  lightbox.innerHTML = `<button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button><img alt="">`;
+  lightbox.innerHTML = `<button class="lightbox-close" type="button" aria-label="Close enlarged image">×</button><img class="blur-img" alt="">`;
   document.body.appendChild(lightbox);
   const image = lightbox.querySelector("img");
+  const revealImage = () => image.classList.add("is-loaded");
+  image.addEventListener("load", revealImage);
   document.addEventListener("click", event => {
     const trigger = event.target.closest(".zoomable");
     if (trigger) {
-      image.src = trigger.dataset.zoomSource;
+      const src = trigger.dataset.zoomSource;
+      image.classList.remove("is-loaded");
+      image.style.backgroundImage = `url('${blurPlaceholder(src)}')`;
       image.alt = trigger.dataset.zoomAlt;
+      image.src = src;
+      if (image.complete && image.naturalWidth > 0) revealImage();
       lightbox.showModal();
     }
   });
@@ -239,4 +423,5 @@ function setupLightbox() {
 
 renderGallery();
 renderProject();
+revealBlurImages();
 setupLightbox();
