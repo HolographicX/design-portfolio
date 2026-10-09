@@ -45,7 +45,8 @@ const projects = [
       heading: "Board, body,<br>and final form.",
       layout: "keyboard-media",
       tiles: [
-        { src: "images/pulp/keyboard.png", alt: "Pulp final keyboard build", label: "Final build / Pulp", large: true },
+        { src: "images/pulp/real-final-build.jpg", alt: "Pulp keyboard real build photo", label: "Final build / Pulp", large: true },
+        { src: "images/pulp/keyboard.png", alt: "Pulp keyboard final render", label: "Final render / Pulp" },
         { src: "images/pulp/kicad-pcb.png", alt: "Pulp PCB layout", label: "PCB layout / KiCad" },
         { src: "images/pulp/onshape-cad-image.png", alt: "Pulp keyboard CAD assembly", label: "CAD assembly / Onshape" }
       ]
@@ -153,6 +154,7 @@ const projects = [
         { src: "images/spin-dac/kicad-schematic.png", alt: "Spin DAC schematic", label: "Schematic / KiCad" },
         { src: "images/spin-dac/pcb-kicad-render.png", alt: "Spin DAC PCB render", label: "PCB / KiCad render" },
         { src: "images/spin-dac/pcb-kicad-routing.png", alt: "Spin DAC PCB routing", label: "PCB / routing" },
+        { src: "images/spin-dac/PCB-real.jpg", alt: "Spin DAC PCB, physical board received", label: "PCB / received" },
         { src: "images/spin-dac/cad-1.png", alt: "Spin DAC CAD model", label: "CAD / enclosure" },
         { src: "images/spin-dac/cad-2.png", alt: "Spin DAC CAD model detail", label: "CAD / assembly" }
       ]
