@@ -207,11 +207,11 @@ function renderProject() {
   const id = document.body.dataset.project || new URLSearchParams(window.location.search).get("project");
   const project = id ? byId[id] : null;
   if (!project) {
-    document.title = "Project not found — design fun";
+    document.title = "Project not found | design fun";
     detail.innerHTML = `<div class="project-shell"><a class="back-link" href="/">← &nbsp;Back to selected work</a><section class="overview"><div><p class="section-kicker">404</p><h2>Project<br>not found.</h2></div><div class="overview-copy"><p>That case study doesn’t exist yet. Head back to see the selected work.</p></div></section></div>`;
     return;
   }
-  document.title = `${project.name} — design fun`;
+  document.title = `${project.name} | design fun`;
   detail.innerHTML = renderCaseStudy(project);
 }
 
