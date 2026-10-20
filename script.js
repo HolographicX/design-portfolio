@@ -85,7 +85,7 @@ const projects = [
       intro: "The goal stayed constant throughout: an ergonomic board with a calm silhouette. Getting there involved a few useful detours.",
       entries: [
         { num: "01 / Research", title: "Finding the balance", body: "I started by studying the keyboards I kept returning to. The Totem made a case for minimalism, while the Corne’s thumb cluster felt like a strong foundation. That comparison set the direction: low profile was non-negotiable, but the layout still needed enough contour and reachability to feel intentional in use." },
-        { num: "02 / Schematic", title: "One schematic, two halves", body: "The electronics came together around nice!nano v2 controllers, hot-swappable Choc switches, diodes, OLEDs, and encoders. I designed both sides around the same schematic from the beginning, with a flippable PCB in mind—one board design instead of separate left and right orders." },
+        { num: "02 / Schematic", title: "One schematic, two halves", body: "The electronics came together around nice!nano v2 controllers, hot-swappable Choc switches, diodes, OLEDs, and encoders. I designed both sides around the same schematic from the beginning, with a flippable PCB in mind (to have one board design instead of separate left and right orders)." },
         { num: "03 / PCB", title: "Letting the layout tool help", body: "After spending too long wrestling with grids, splay, and mirrored placement in KiCad, I switched to Ergogen for the layout work. It was the right pivot: the component positions became easier to iterate on, and the flippable-board constraint stopped dominating every decision. Back in KiCad, I refined the placement, added 3D models, and prepared the board for routing." },
         { num: "04 / Enclosure", title: "Giving the electronics a home", body: "With the board taking shape, I moved into Onshape to assemble the PCB and components, then designed the case, bottom plate, and screw locations around them. The final stretch was about resolution: finishing the bill of materials, rendering the form in Blender, and routing the traces that turn the idea into a buildable keyboard." }
       ]
@@ -224,6 +224,13 @@ const byId = Object.fromEntries(projects.map(project => [project.id, project]));
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 
 const thumbHashes = {
+  "images/crossitron/build-1-back.jpg": "nigODYKYeHeAeHZ8d6aIiPyImf8n",
+  "images/crossitron/build-1.jpg": "5CgKHAK26Hn4Rqdad2iJb5v4lQ==",
+  "images/crossitron/building-process-1.jpg": "oSgKDAL4iJh3eaCKuJf4c4oLeA==",
+  "images/crossitron/building-process-2.jpg": "3DgGFQL8onGnuGYIdX9XmPVNd/yF",
+  "images/crossitron/final-build-folded.jpg": "oSgOFILYmoaPVodsloi4n36K/A==",
+  "images/crossitron/final-build.jpg": "5SgOHALI12j4Z3OJiIiGj2v66g==",
+  "images/crossitron/prototype-3d-prints.jpg": "31gGHQb4qHd1hocIeH2YecpviPIH",
   "images/fracley/build-prototype.jpg": "XSkKDYKKmXfbZ3ePd4h2hucmb3yw",
   "images/fracley/eclipse-image.png": "yPcBBYAI5yl4d3hwjmGXjQh3cHAH",
   "images/fracley/fracley.png": "FvcNFICGhniAh3eHd4eIj8r6tQ==",
