@@ -1,6 +1,61 @@
 const githubIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7A11.3 11.3 0 0 0 8.42 22.72c.57.1.78-.25.78-.55v-2.15c-3.17.69-3.84-1.35-3.84-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.53-.29-5.19-1.26-5.19-5.63 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.12 1.17A10.8 10.8 0 0 1 12 5.9c.96 0 1.93.13 2.83.38 2.16-1.48 3.12-1.17 3.12-1.17.62 1.57.23 2.73.11 3.02.73.8 1.18 1.82 1.18 3.07 0 4.38-2.66 5.33-5.2 5.61.41.35.78 1.04.78 2.1v3.12c0 .3.2.66.79.55A11.3 11.3 0 0 0 12 .7Z"/></svg>`;
 
 const projects = [
+    {
+    id: "crossitron",
+    page: "/crossitron",
+    name: "Crossitron",
+    description: "A foldable 3D printer.",
+    image: "images/crossitron/final-build-folded.jpg",
+    github: "https://github.com/HolographicX/crossitron",
+    meta: { type: "Foldable FDM 3D printer", year: "in progress" },
+    subtitle: "A compact, fully 3D-printed FDM printer with a scissor-lift Z-axis and an upside-down bed.",
+    hero: { src: "images/crossitron/final-build-folded.jpg", alt: "Crossitron folded into its compact form", caption: "01 — Crossitron / folded build" },
+    overview: {
+      kicker: "A printer that packs down",
+      heading: "About",
+      body: [
+        "Crossitron is a compact, foldable FDM 3D printer built around a novel scissor-lift architecture and a completely 3D-printed chassis. It keeps a 220 × 220 × 135 mm print volume while folding down to 250 × 250 × 80 mm, with the power supply built in and a total weight under 3 kg.",
+        "The folding mechanism is also the Z-axis. To make that work without giving up stability or print precision, I redesigned the pivots around shoulder joints and thrust bearings, then inverted the printer so its bed sits above the folded mechanism in a Positron-style layout. The result is a large usable build area in a very small package (about 140% build-volume efficiency relative to its folded footprint)."
+      ],
+      facts: [
+        { label: "Print volume", value: "220 × 220 × 135 mm" },
+        { label: "Folded size", value: "250 × 250 × 80 mm" },
+        { label: "Weight", value: "Under 3 kg" }
+      ]
+    },
+    process: {
+      kicker: "A year of building and testing",
+      heading: "Process",
+      intro: "Crossitron is an ongoing exercise in making a machine that can fold away without feeling compromised when it is printing.",
+      entries: [
+        { num: "01 / Design", title: "Making the fold do more", body: "The starting point was a scissor lift that could serve as both the folding mechanism and the Z-axis. That combination makes the printer compact in transit, but it also means the moving geometry is non-linear—every point in the lift has to stay controlled as the bed changes height." },
+        { num: "02 / Stability", title: "Reworking the pivots", body: "The hardest part has been preserving stiffness and repeatable motion through that non-linear Z-axis. I redesigned the pivot structure around shoulder joints and thrust bearings so the linkage has better support under load and less unwanted movement during printing." },
+        { num: "03 / Layout", title: "Turning the printer upside down", body: "I adopted an inverted, Positron-style bed arrangement, placing the print bed above the folded mechanism. It makes far better use of the folded footprint while leaving the mechanism room to operate underneath." },
+        { num: "04 / Iteration", title: "Testing the whole system", body: "Over the past year I have continuously built, tested, and revised the mechanical parts, electronics, and firmware. It is still evolving, and each iteration helps turn a compact concept into a printer that can be depended on." }
+      ]
+    },
+    features: {
+      kicker: "Designed around the essentials",
+      heading: "Details",
+      items: ["220 × 220 × 135 mm print volume", "250 × 250 × 80 mm folded footprint", "Under 3 kg with built-in power supply", "Scissor lift integrated into the Z-axis", "Positron-style inverted print bed", "Shoulder-joint and thrust-bearing pivots", "Fully 3D-printed chassis", "Approx. 140% build-volume efficiency"]
+    },
+    media: {
+      kicker: "From prototypes to the current build",
+      heading: "Workbench",
+      layout: "crossitron-media",
+      tiles: [
+        { src: "images/crossitron/final-build.jpg", alt: "Crossitron final build", label: "Current build / Crossitron", large: true },
+        { src: "images/crossitron/final-build-folded.jpg", alt: "Crossitron folded build", label: "Folded form / Crossitron" },
+        { src: "images/crossitron/build-1.jpg", alt: "Crossitron early build", label: "Build / front" },
+        { src: "images/crossitron/build-1-back.jpg", alt: "Crossitron early build from the back", label: "Build / back" },
+        { src: "images/crossitron/building-process-1.jpg", alt: "Crossitron build process", label: "Build process / assembly" },
+        { src: "images/crossitron/building-process-2.jpg", alt: "Crossitron build process detail", label: "Build process / mechanism" },
+        { src: "images/crossitron/prototype-3d-prints.jpg", alt: "Crossitron prototype 3D prints", label: "Prototypes / printed parts" }
+      ]
+    },
+    cta: { text: "Crossitron is in active development and currently ready to download and build.", link: "https://github.com/HolographicX/crossitron", label: "View source" }
+  },
   {
     id: "pulp",
     page: "/pulp",
@@ -12,8 +67,8 @@ const projects = [
     subtitle: "A minimal, low-profile split ortholinear keyboard with 40 keys.",
     hero: { src: "images/pulp/render-2.png", alt: "Pulp keyboard render", caption: "01 — Pulp / final render" },
     overview: {
-      kicker: "A small keyboard, deliberately",
-      heading: "Less reach.<br>More intention.",
+      kicker: "A deliberately small keyboard",
+      heading: "About",
       body: [
         "Pulp began with a simple desire: make a split keyboard that feels as clean as it is capable. Split layouts are a revelation ergonomically, but I did not want that comfort to come with visual clutter or unnecessary complexity.",
         "I took cues from the Totem’s restraint and the Corne’s familiar thumb cluster, then made the design my own: a compact, slightly staggered layout, low-profile Choc switches, and just forty keys. Each half carries a tiny OLED display and a low-profile knob, so the board remains expressive without becoming busy."
@@ -26,7 +81,7 @@ const projects = [
     },
     process: {
       kicker: "From reference to routing",
-      heading: "Designing<br>the quiet details.",
+      heading: "Process",
       intro: "The goal stayed constant throughout: an ergonomic board with a calm silhouette. Getting there involved a few useful detours.",
       entries: [
         { num: "01 / Research", title: "Finding the balance", body: "I started by studying the keyboards I kept returning to. The Totem made a case for minimalism, while the Corne’s thumb cluster felt like a strong foundation. That comparison set the direction: low profile was non-negotiable, but the layout still needed enough contour and reachability to feel intentional in use." },
@@ -37,12 +92,12 @@ const projects = [
     },
     features: {
       kicker: "Built to be used, and remade",
-      heading: "Small board.<br>Complete system.",
+      heading: "Details",
       items: ["Hot-swappable Choc v1 switches", "128 × 32 OLED on each half", "Low-profile knob on each half", "Flippable PCB", "3D-printable, open-source design", "Corne-inspired thumb cluster"]
     },
     media: {
       kicker: "The workbench",
-      heading: "Board, body,<br>and final form.",
+      heading: "Workbench",
       layout: "keyboard-media",
       tiles: [
         { src: "images/pulp/real-final-build.jpg", alt: "Pulp keyboard real build photo", label: "Final build / Pulp", large: true },
@@ -65,7 +120,7 @@ const projects = [
     hero: { src: "images/fracley/fracley.png", alt: "Fracley telescope render", caption: "01 — Fracley / render" },
     overview: {
       kicker: "A beginner-friendly telescope",
-      heading: "Big views.<br>Small budget.",
+      heading: "About",
       body: [
         "Fracley aims to be a beginner-friendly, yet high-performance visual and astrophotography hybrid telescope at a low budget. It is a 3D printable refractor based on the Hadley telescope, adapted into a lighter, more portable form.",
         "The optical design centers on an 83mm aperture doublet lens with a 600mm focal length and f/7.2 focal ratio. That ratio is customizable—buy a lower focal length lens and move the lens cell backward to change the configuration."
@@ -78,7 +133,7 @@ const projects = [
     },
     process: {
       kicker: "From lens cell to focuser",
-      heading: "Optics,<br>made printable.",
+      heading: "Process",
       intro: "A telescope is unforgiving. Get something off by a fraction of a millimetre and the image never sharpens. So here is how I chased that precision with printed parts, and why I made the choices I did.",
       entries: [
         { num: "01 / Motivation", title: "A telescope I could actually build", body: "I wanted to look at the night sky and photograph it, but the refractors that do both well cost more than I could justify. The Hadley project had already shown me that a 3D-printed telescope could really perform, so I used it as a starting point. Fracley became my attempt to take that proven base and make it my own. I wanted something light enough to carry outside on a whim, cheap enough to build from printed parts and common hardware, and open enough that someone else could build one from my files." },
@@ -90,12 +145,12 @@ const projects = [
     },
     features: {
       kicker: "Designed for the night sky",
-      heading: "Portable.<br>Capable.",
+      heading: "Details",
       items: ["Refracting telescope design", "83mm aperture doublet lens", "600mm focal length, f/7.2", "Lightweight and portable", "2 inch non-rotating focuser", "Built for visual + astrophotography", "Customizable focal ratio", "Prints without supports"]
     },
     media: {
       kicker: "Build & sky",
-      heading: "From CAD<br>to first light.",
+      heading: "Workbench",
       layout: "fracley-media",
       tiles: [
         { src: "images/fracley/initial-cad.png", alt: "Fracley initial CAD model", label: "CAD / first pass" },
@@ -119,7 +174,7 @@ const projects = [
     hero: { src: "images/spin-dac/spin-dac.png", alt: "Spin DAC render", caption: "01 — Spin DAC / current direction" },
     overview: {
       kicker: "A better signal path",
-      heading: "Small device.<br>Serious sound.",
+      heading: "About",
       body: [
         "Spin DAC started with a frustrating gap: commercial DACs that promise clean, portable audio tend to be either expensive, bulky, or both. I wanted to see whether a compact, budget-conscious USB-C DAC could still be engineered with a careful signal path and a focus on low noise.",
         "The design converts digital audio from a USB-C source into an analog signal for headphones or speakers. The circuit centers on three essential stages—USB to I²S, digital-to-analog conversion, and amplification—with an analog volume potentiometer to keep the physical interaction direct and simple."
@@ -132,7 +187,7 @@ const projects = [
     },
     process: {
       kicker: "A first audio board",
-      heading: "Keeping the noise<br>out of the music.",
+      heading: "Process",
       intro: "This is my first PCB project and my first four-layer board. The board has arrived, and hardware assembly is currently paused while I focus on other projects.",
       entries: [
         { num: "01 / Research", title: "Making the project feel possible", body: "I began by looking at existing DIY DACs and compact headphone amplifiers. Those projects made the core architecture feel approachable: USB-to-I²S, a DAC, and an op-amp. The real challenge was not inventing the circuit, but building a clean enough implementation that noise and interference would not undermine it." },
@@ -143,12 +198,12 @@ const projects = [
     },
     features: {
       kicker: "Signal chain",
-      heading: "Designed for<br>quiet listening.",
+      heading: "Details",
       items: ["USB-C input", "Up to 24-bit / 192 kHz audio", "PCM5102A DAC", "Integrated op-amp stage", "Separated analog and digital signals", "3.5 mm audio output"]
     },
     media: {
       kicker: "Documentation",
-      heading: "From circuit<br>to enclosure.",
+      heading: "Workbench",
       layout: "spin-media",
       tiles: [
         { src: "images/spin-dac/render-2.png", alt: "Spin DAC alternate render", label: "Render / concept" },
@@ -161,7 +216,8 @@ const projects = [
       ]
     },
     cta: { text: "Assembly is next when Spin DAC returns from its pause.", link: "https://github.com/HolographicX/spin-dac", label: "View source" }
-  }
+  },
+
 ];
 
 const byId = Object.fromEntries(projects.map(project => [project.id, project]));
@@ -350,7 +406,7 @@ function renderGallery() {
   if (!grid) return;
   grid.innerHTML = projects.map(project => {
     const href = project.page || `/project?project=${project.id}`;
-    return `<article class="project-card"><a class="project-link" href="${href}" aria-label="View ${escapeHtml(project.name)} case study"><span class="blur-frame"${blurFrameStyle(project.image)}><img class="project-image blur-img" src="${project.image}" alt="${escapeHtml(project.name)} project preview" loading="lazy" decoding="async" /></span><div class="project-text"><span class="project-title">${escapeHtml(project.name)}</span><span class="project-description">${escapeHtml(project.description)}</span></div></a>${project.github ? `<a class="icon-button" href="${project.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(project.name)} on GitHub">${githubIcon}</a>` : ""}</article>`;
+    return `<article class="project-card"><a class="project-link" href="${href}" aria-label="View ${escapeHtml(project.name)} case study"><span class="blur-frame"${blurFrameStyle(project.image)}><img class="project-image blur-img" src="${project.image}" alt="${escapeHtml(project.name)} project preview" loading="lazy" decoding="async" /></span></a><div class="project-text"><a class="project-text-link" href="${href}" aria-label="View ${escapeHtml(project.name)} case study"><span class="project-title">${escapeHtml(project.name)}</span><span class="project-description">${escapeHtml(project.description)}</span></a>${project.github ? `<a class="icon-button" href="${project.github}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(project.name)} on GitHub">${githubIcon}</a>` : ""}</div></article>`;
   }).join("");
 }
 
@@ -378,7 +434,7 @@ function renderCaseStudy(project) {
     </section>
     <section class="feature-section"><p class="section-kicker">${project.features.kicker}</p><h2>${project.features.heading}</h2><div class="feature-list">${features}</div></section>
     <section class="media-section"><p class="section-kicker">${project.media.kicker}</p><h2>${project.media.heading}</h2><div class="media-grid ${project.media.layout}">${tiles}</div></section>
-    <footer class="case-cta"><p>${project.cta.text}</p><a class="repo-link" href="${project.cta.link}" target="_blank" rel="noopener">${project.cta.label} ↗</a></footer>
+    <footer class="case-cta"><p>${project.cta.text}</p>${project.cta.link ? `<a class="repo-link" href="${project.cta.link}" target="_blank" rel="noopener">${project.cta.label} ↗</a>` : ""}</footer>
   </div>`;
 }
 
