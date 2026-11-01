@@ -228,6 +228,10 @@ h1 em {
   border-radius: 26px;
 }
 
+.hero-video {
+  background: #000;
+}
+
 .hero-caption {
   margin: 11px 4px 0;
   color: var(--muted);

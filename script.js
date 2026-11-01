@@ -10,7 +10,7 @@ const projects = [
     github: "https://github.com/HolographicX/crossitron",
     meta: { type: "Foldable FDM 3D printer", year: "in progress" },
     subtitle: "A compact, fully 3D-printed FDM printer with a scissor-lift Z-axis and an upside-down bed.",
-    hero: { src: "images/crossitron/final-build-folded.jpg", alt: "Crossitron folded into its compact form", caption: "01 — Crossitron / folded build" },
+    hero: { video: "images/crossitron/crossitron.mp4", poster: "images/crossitron/final-build-folded.jpg", alt: "Crossitron folding demo video", caption: "01 — Crossitron / demo" },
     overview: {
       kicker: "A printer that packs down",
       heading: "About",
@@ -423,6 +423,9 @@ function renderCaseStudy(project) {
   const entries = project.process.entries.map(entry => `<article class="process-entry"><p class="process-number">${entry.num}</p><div><h3>${entry.title}</h3><p>${entry.body}</p></div></article>`).join("");
   const features = project.features.items.map(item => `<span>${item}</span>`).join("");
   const tiles = project.media.tiles.map(tile => `<figure class="media-tile${tile.large ? " large" : ""}"><button class="zoomable blur-frame" type="button"${blurFrameStyle(tile.src)} data-zoom-source="${tile.src}" data-zoom-alt="${escapeHtml(tile.alt)}"><img class="blur-img" src="${tile.src}" alt="${escapeHtml(tile.alt)}" loading="lazy" decoding="async"><span class="media-label">${tile.label}</span></button></figure>`).join("");
+  const hero = project.hero.video
+    ? `<figure class="hero-figure"><video class="hero-image hero-video" src="${project.hero.video}" poster="${project.hero.poster || ""}" aria-label="${escapeHtml(project.hero.alt)}" autoplay muted loop playsinline controls preload="metadata"></video><figcaption class="hero-caption">${project.hero.caption}</figcaption></figure>`
+    : `<figure class="hero-figure"><button class="zoomable hero-zoom blur-frame" type="button"${blurFrameStyle(project.hero.src)} data-zoom-source="${project.hero.src}" data-zoom-alt="${escapeHtml(project.hero.alt)}"><img class="hero-image blur-img" src="${project.hero.src}" alt="${escapeHtml(project.hero.alt)}" fetchpriority="high" decoding="async"><span class="zoom-hint">Click to enlarge ↗</span></button><figcaption class="hero-caption">${project.hero.caption}</figcaption></figure>`;
   return `<div class="project-shell">
     <a class="back-link" href="/">← &nbsp;Back to selected work</a>
     <header class="project-hero">
@@ -430,7 +433,7 @@ function renderCaseStudy(project) {
       <h1 class="project-heading">${project.name}.</h1>
       <p class="project-subtitle">${project.subtitle}</p>
     </header>
-    <figure class="hero-figure"><button class="zoomable hero-zoom blur-frame" type="button"${blurFrameStyle(project.hero.src)} data-zoom-source="${project.hero.src}" data-zoom-alt="${escapeHtml(project.hero.alt)}"><img class="hero-image blur-img" src="${project.hero.src}" alt="${escapeHtml(project.hero.alt)}" fetchpriority="high" decoding="async"><span class="zoom-hint">Click to enlarge ↗</span></button><figcaption class="hero-caption">${project.hero.caption}</figcaption></figure>
+    ${hero}
     <section class="overview">
       <div><p class="section-kicker">${project.overview.kicker}</p><h2>${project.overview.heading}</h2></div>
       <div class="overview-copy">${paragraphs}<div class="facts">${facts}</div></div>
